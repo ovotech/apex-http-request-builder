@@ -236,6 +236,17 @@ public class HttpRequestBuilder
         return setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_APPLICATION_JSON).setBody(JSON.serialize(data));
     }
 
+     /**
+     * @description Sets the contents of the body for this request. The contents are serialized as JSON.
+     * @param data The data to be serialized as the body.
+     * @param suppressApexObjectNulls Suppresses null values when serializing Apex objects into JSON content.
+     * @return HttpRequestBuilder The updated request builder.
+     */
+    public HttpRequestBuilder json(Object data, Boolean suppressApexObjectNulls) 
+    {
+        return setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE_APPLICATION_JSON).setBody(JSON.serialize(data, suppressApexObjectNulls));
+    }
+
     /**
      * @description Sets the contents of the body for this request.
      * @param body The body.
